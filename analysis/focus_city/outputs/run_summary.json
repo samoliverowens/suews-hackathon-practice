@@ -1,0 +1,29 @@
+{
+  "status": "success",
+  "supy_version": "2025.7.6",
+  "config": "data/uda-city-hackathon/uda-city-supy2025-compat.yml",
+  "compatibility_notes": [
+    "Official dataset requires supy >= 2026.6.5.",
+    "This host is macOS 14; available supy 2026.6.5 arm64 wheel is tagged macOS 15.",
+    "Compatibility config changes are recorded in analysis/focus_city/compat_changes.txt.",
+    "Forcing reader uses iloc[-1] to avoid an old pandas positional-indexing bug."
+  ],
+  "present": {
+    "scenario": "present",
+    "rows": 262080,
+    "sites": 10,
+    "dangerous_heat_hours_gt35_min": 0,
+    "dangerous_heat_hours_gt35_max": 37,
+    "t2_mean_c_min": 28.762624020769188,
+    "t2_mean_c_max": 29.756050146532676
+  },
+  "future": {
+    "scenario": "future",
+    "rows": 262080,
+    "sites": 10,
+    "dangerous_heat_hours_gt35_min": 17,
+    "dangerous_heat_hours_gt35_max": 211,
+    "t2_mean_c_min": 31.221005819606685,
+    "t2_mean_c_max": 32.29554094935357
+  }
+}

@@ -1,0 +1,11 @@
+gridiv,name,type,dangerous_heat_hours_present,risk_index_present,risk_rank_present,dangerous_heat_hours_future,risk_index_future,risk_rank_future,delta_dangerous_heat_hours,delta_risk_index
+9,Fuzhou Lanes,hotspot,37,1.0,1,211,1.0,1,174,0.0
+7,Mlima Moto,hotspot,9,0.6301561648745939,2,126,0.8329958739496157,2,117,0.2028397090750218
+4,Kampong Lama,hotspot,6,0.5411068931925437,3,103,0.756598480591236,3,97,0.21549158739869234
+5,Dhobi Lines,hotspot,4,0.4670724904118396,4,96,0.7267303878603549,4,92,0.2596578974485153
+8,Victoria Exchange,core,0,0.0,5,55,0.2056614781991592,5,55,0.2056614781991592
+6,Lusitano Square,core,0,0.0,5,35,0.1875092010551888,6,35,0.1875092010551888
+1,Jade Gardens,refuge,0,0.0,5,20,0.0,7,20,0.0
+2,Serendib Rise,refuge,0,0.0,5,17,0.0,7,17,0.0
+3,Taman Melati,refuge,0,0.0,5,21,0.0,7,21,0.0
+10,Zheng He Towers,core,1,0.0,5,65,0.0,7,64,0.0

@@ -1,19 +1,15 @@
-# SUEWS Hackathon Practice
+# UDA-city Heat-risk Analysis
 
-This is a practice repository for the SUEWS Community Hackathon setup workflow.
+This practice submission runs SUEWS for the UDA-city focus dataset, bridges heat hazard to socio-economic heat risk, and reports results for all ten neighbourhoods.
 
-## Setup smoke test
+[Read the full report](report.html)
 
-I used the SUEWS/SuPy runtime installed through the SUEWS agent tooling to run the bundled sample simulation for 1-2 August 2012.
+## Headline
 
-- Status: success
-- Runtime: SuPy 2025.7.6
-- Output: 576 five-minute timesteps, 1001 output columns
-- Exported variables: T2, QN, QH, QE, QS, Rain
-- Mean 2 m air temperature in the sample: 18.77 C
+Fuzhou Lanes is the highest-risk neighbourhood in both present and future scenarios because high dangerous-heat hours coincide with maximum exposure and high vulnerability.
 
-The reproducible script and compact outputs are in `analysis/`.
+![Risk index](assets/focus_city/overview_risk_index.png)
 
-## Hackathon reminder
+## Runtime Note
 
-For the judged repository, replace this practice page with the heat-hazard story, the socio-economic risk indicator, and a plain account of where the hazard-to-indicator bridge holds or breaks.
+The supplied dataset asks for `supy >= 2026.6.5`; this macOS 14 machine could not install the available macOS 15 ARM wheel, so the report records a compatibility run using SuPy 2025.7.6. See the report caveats before interpreting the numbers as final.

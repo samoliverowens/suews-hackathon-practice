@@ -1,0 +1,21 @@
+Jade Gardens: timezone 5.5 -> 5
+Jade Gardens: initial_states.water.soilstore 0 -> 10
+Serendib Rise: timezone 5.5 -> 5
+Serendib Rise: initial_states.water.soilstore 0 -> 10
+Taman Melati: timezone 5.5 -> 5
+Taman Melati: initial_states.water.soilstore 0 -> 10
+Kampong Lama: timezone 5.5 -> 5
+Kampong Lama: initial_states.water.soilstore 0 -> 10
+Dhobi Lines: timezone 5.5 -> 5
+Dhobi Lines: initial_states.water.soilstore 0 -> 10
+Lusitano Square: timezone 5.5 -> 5
+Lusitano Square: initial_states.water.soilstore 0 -> 10
+Mlima Moto: timezone 5.5 -> 5
+Mlima Moto: initial_states.water.soilstore 0 -> 10
+Victoria Exchange: timezone 5.5 -> 5
+Victoria Exchange: initial_states.water.soilstore 0 -> 10
+Fuzhou Lanes: timezone 5.5 -> 5
+Fuzhou Lanes: initial_states.water.soilstore 0 -> 10
+Zheng He Towers: timezone 5.5 -> 5
+Zheng He Towers: initial_states.water.soilstore 0 -> 10
+model.control.forcing.file copied to legacy model.control.forcing_file: forcing/present_hot_humid/UDA_2024_data_60.txt
