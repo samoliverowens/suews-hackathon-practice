@@ -1,0 +1,39 @@
+{
+  "status": "success",
+  "supy_version": "2025.7.6",
+  "future_forcing": "data/uda-city-hackathon/forcing/future_hot_humid/UDA_2024_data_60.txt",
+  "experiments": [
+    {
+      "name": "trees_5pp_from_paved",
+      "description": "Add 5 percentage points evergreen tree cover, removing the same amount from paved cover.",
+      "config": "analysis/experiments/configs/trees_5pp_from_paved.yml",
+      "elapsed_seconds": 55.9,
+      "min_delta_dangerous_heat_hours": 6,
+      "max_delta_dangerous_heat_hours": 228
+    },
+    {
+      "name": "trees_10pp_from_paved",
+      "description": "Add 10 percentage points evergreen tree cover, removing the same amount from paved cover.",
+      "config": "analysis/experiments/configs/trees_10pp_from_paved.yml",
+      "elapsed_seconds": 55.3,
+      "min_delta_dangerous_heat_hours": 19,
+      "max_delta_dangerous_heat_hours": 352
+    },
+    {
+      "name": "paved_albedo_035",
+      "description": "Raise paved-surface albedo to 0.35.",
+      "config": "analysis/experiments/configs/paved_albedo_035.yml",
+      "elapsed_seconds": 53.3,
+      "min_delta_dangerous_heat_hours": -17,
+      "max_delta_dangerous_heat_hours": -1
+    },
+    {
+      "name": "building_albedo_035",
+      "description": "Raise building-surface albedo to 0.35.",
+      "config": "analysis/experiments/configs/building_albedo_035.yml",
+      "elapsed_seconds": 52.4,
+      "min_delta_dangerous_heat_hours": -12,
+      "max_delta_dangerous_heat_hours": 0
+    }
+  ]
+}

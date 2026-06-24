@@ -4,6 +4,8 @@ This practice submission runs SUEWS for the UDA-city focus dataset, bridges heat
 
 [Read the full report](report.html)
 
+[Read the physical-parameter experiment notes](physical-experiments.html)
+
 ## Headline
 
 Fuzhou Lanes is the highest-risk neighbourhood in both present and future scenarios because high dangerous-heat hours coincide with maximum exposure and high vulnerability.
