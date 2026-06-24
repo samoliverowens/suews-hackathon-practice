@@ -6,33 +6,65 @@
     {
       "name": "trees_5pp_from_paved",
       "description": "Add 5 percentage points evergreen tree cover, removing the same amount from paved cover.",
-      "config": "analysis/experiments/configs/trees_5pp_from_paved.yml",
-      "elapsed_seconds": 55.9,
+      "status": "skipped_existing_output",
+      "elapsed_seconds": 0.0,
       "min_delta_dangerous_heat_hours": 6,
       "max_delta_dangerous_heat_hours": 228
     },
     {
       "name": "trees_10pp_from_paved",
       "description": "Add 10 percentage points evergreen tree cover, removing the same amount from paved cover.",
-      "config": "analysis/experiments/configs/trees_10pp_from_paved.yml",
-      "elapsed_seconds": 55.3,
+      "status": "skipped_existing_output",
+      "elapsed_seconds": 0.0,
       "min_delta_dangerous_heat_hours": 19,
       "max_delta_dangerous_heat_hours": 352
     },
     {
       "name": "paved_albedo_035",
       "description": "Raise paved-surface albedo to 0.35.",
-      "config": "analysis/experiments/configs/paved_albedo_035.yml",
-      "elapsed_seconds": 53.3,
+      "status": "skipped_existing_output",
+      "elapsed_seconds": 0.0,
       "min_delta_dangerous_heat_hours": -17,
       "max_delta_dangerous_heat_hours": -1
     },
     {
       "name": "building_albedo_035",
       "description": "Raise building-surface albedo to 0.35.",
-      "config": "analysis/experiments/configs/building_albedo_035.yml",
-      "elapsed_seconds": 52.4,
+      "status": "skipped_existing_output",
+      "elapsed_seconds": 0.0,
       "min_delta_dangerous_heat_hours": -12,
+      "max_delta_dangerous_heat_hours": 0
+    },
+    {
+      "name": "grass_5pp_from_paved",
+      "description": "Add 5 percentage points grass cover, removing the same amount from paved cover.",
+      "config": "analysis/experiments/configs/grass_5pp_from_paved.yml",
+      "elapsed_seconds": 53.1,
+      "min_delta_dangerous_heat_hours": 0,
+      "max_delta_dangerous_heat_hours": 5
+    },
+    {
+      "name": "water_2pp_from_paved",
+      "description": "Add 2 percentage points water cover, removing the same amount from paved cover.",
+      "config": "analysis/experiments/configs/water_2pp_from_paved.yml",
+      "elapsed_seconds": 53.6,
+      "min_delta_dangerous_heat_hours": -1,
+      "max_delta_dangerous_heat_hours": 0
+    },
+    {
+      "name": "evetr_irrigation_fraction_100",
+      "description": "Set evergreen tree irrigation fraction to 1.0.",
+      "config": "analysis/experiments/configs/evetr_irrigation_fraction_100.yml",
+      "elapsed_seconds": 52.4,
+      "min_delta_dangerous_heat_hours": 0,
+      "max_delta_dangerous_heat_hours": 0
+    },
+    {
+      "name": "vegetation_soil_store_300",
+      "description": "Set evergreen, deciduous and grass soil-store capacity to 300.",
+      "config": "analysis/experiments/configs/vegetation_soil_store_300.yml",
+      "elapsed_seconds": 52.4,
+      "min_delta_dangerous_heat_hours": 0,
       "max_delta_dangerous_heat_hours": 0
     }
   ]

@@ -184,7 +184,7 @@ Heat-risk result: dangerous-heat hours increase from **1** to **65**. The risk i
 
 ## Physical-parameter Experiments
 
-After the baseline present and future runs, four one-factor physical SUEWS parameter experiments were run under the future hot-humid forcing. Each experiment changes one physical parameter across all ten neighbourhoods and is compared with the baseline future scenario above.
+After the baseline present and future runs, an initial four one-factor physical SUEWS parameter experiments were run under the future hot-humid forcing. Each experiment changes one physical parameter across all ten neighbourhoods and is compared with the baseline future scenario above. For the albedo experiments, the baseline paved and building albedo values are **0.20** in every site, and the experiment value is **0.35**.
 
 The table reports annual dangerous-heat hours after spin-up. Lower values are better. The final two columns show the baseline future risk index and the risk index for the clearest beneficial experiment, paved albedo set to 0.35.
 
@@ -204,6 +204,23 @@ The table reports annual dangerous-heat hours after spin-up. Lower values are be
 Across the ten sites, baseline future dangerous-heat hours average **74.9** hours. The +5pp and +10pp evergreen-tree surface-fraction tests increase that average to **142.9** and **212.0** hours respectively. Paved albedo 0.35 reduces it to **66.2** hours, and building albedo 0.35 reduces it to **70.4** hours.
 
 The vegetation result should be interpreted cautiously. This was a surface-fraction-only edit, not a full tree retrofit with explicit street shading, soil-moisture support, irrigation or revised canopy assumptions. It therefore tests a narrow SUEWS parameter perturbation, not the full cooling potential of urban trees for pedestrians.
+
+Additional non-albedo tests were then run to separate land-cover and water-availability effects. The table again reports dangerous-heat hours under future forcing.
+
+| Site | Baseline future hours | Grass +5pp | Water +2pp | Evergreen irrigation 1.0 | Vegetation soil store 300 |
+|---|---:|---:|---:|---:|---:|
+| 1. Jade Gardens | 20 | 22 | 20 | 20 | 20 |
+| 2. Serendib Rise | 17 | 17 | 17 | 17 | 17 |
+| 3. Taman Melati | 21 | 23 | 21 | 21 | 21 |
+| 4. Kampong Lama | 103 | 104 | 103 | 103 | 103 |
+| 5. Dhobi Lines | 96 | 98 | 96 | 96 | 96 |
+| 6. Lusitano Square | 35 | 36 | 35 | 35 | 35 |
+| 7. Mlima Moto | 126 | 129 | 126 | 126 | 126 |
+| 8. Victoria Exchange | 55 | 57 | 55 | 55 | 55 |
+| 9. Fuzhou Lanes | 211 | 216 | 211 | 211 | 211 |
+| 10. Zheng He Towers | 65 | 66 | 64 | 65 | 65 |
+
+The grass-cover test is close to neutral but slightly increases dangerous-heat hours, averaging **+1.9** hours across sites. The water-cover test is close to neutral but slightly beneficial, averaging **-0.1** hours. Setting evergreen irrigation fraction to **1.0** and raising evergreen, deciduous and grass soil-store capacity from **150** to **300** do not change the dangerous-heat-hour count in this setup. This suggests the threshold metric is much more sensitive to radiative surface properties than to these isolated hydrological parameters, at least under the current compatibility configuration.
 
 ## Caveats and Interpretation
 

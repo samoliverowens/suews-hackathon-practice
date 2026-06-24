@@ -4,6 +4,8 @@ This page records a first one-factor sensitivity screen using only physical SUEW
 
 The response metric is the change in annual dangerous-heat hours relative to the baseline future run, where a dangerous-heat hour is an hourly mean 2 m air temperature above 35 C after the 14-day spin-up.
 
+For the albedo experiments, the baseline paved and building albedo values are 0.20 in every site, and the experiment value is 0.35.
+
 ## Experiment Summary
 
 | Experiment | SUEWS parameter changed | Baseline mean hours | Experiment mean hours | Mean change | Range of change |
@@ -12,6 +14,10 @@ The response metric is the change in annual dangerous-heat hours relative to the
 | `trees_10pp_from_paved` | +0.10 evergreen tree surface fraction, -0.10 paved fraction | 74.9 | 212.0 | +137.1 | +19 to +352 |
 | `paved_albedo_035` | paved albedo set to 0.35 | 74.9 | 66.2 | -8.7 | -17 to -1 |
 | `building_albedo_035` | building albedo set to 0.35 | 74.9 | 70.4 | -4.5 | -12 to 0 |
+| `grass_5pp_from_paved` | +0.05 grass surface fraction, -0.05 paved fraction | 74.9 | 76.8 | +1.9 | +0 to +5 |
+| `water_2pp_from_paved` | +0.02 water surface fraction, -0.02 paved fraction | 74.9 | 74.8 | -0.1 | -1 to +0 |
+| `evetr_irrigation_fraction_100` | evergreen tree irrigation fraction set to 1.0 | 74.9 | 74.9 | +0.0 | +0 to +0 |
+| `vegetation_soil_store_300` | evergreen, deciduous and grass soil-store capacity set to 300 | 74.9 | 74.9 | +0.0 | +0 to +0 |
 
 ## Site Values
 
@@ -28,6 +34,21 @@ The response metric is the change in annual dangerous-heat hours relative to the
 | 9. Fuzhou Lanes | 211 | 439 | 563 | 194 | 199 | 1.00 | 1.00 |
 | 10. Zheng He Towers | 65 | 127 | 109 | 61 | 60 | 0.00 | 0.00 |
 
+## Non-albedo Site Values
+
+| Site | Baseline future hours | Grass +5pp | Water +2pp | Evergreen irrigation 1.0 | Vegetation soil store 300 |
+|---|---:|---:|---:|---:|---:|
+| 1. Jade Gardens | 20 | 22 | 20 | 20 | 20 |
+| 2. Serendib Rise | 17 | 17 | 17 | 17 | 17 |
+| 3. Taman Melati | 21 | 23 | 21 | 21 | 21 |
+| 4. Kampong Lama | 103 | 104 | 103 | 103 | 103 |
+| 5. Dhobi Lines | 96 | 98 | 96 | 96 | 96 |
+| 6. Lusitano Square | 35 | 36 | 35 | 35 | 35 |
+| 7. Mlima Moto | 126 | 129 | 126 | 126 | 126 |
+| 8. Victoria Exchange | 55 | 57 | 55 | 55 | 55 |
+| 9. Fuzhou Lanes | 211 | 216 | 211 | 211 | 211 |
+| 10. Zheng He Towers | 65 | 66 | 64 | 65 | 65 |
+
 ## Interpretation
 
 The clearest beneficial single-factor result is raising paved-surface albedo. It reduces dangerous-heat hours in every neighbourhood, with the largest reductions in the highest-hazard sites: Fuzhou Lanes, Kampong Lama, Dhobi Lines and Mlima Moto.
@@ -35,6 +56,8 @@ The clearest beneficial single-factor result is raising paved-surface albedo. It
 Raising building albedo is also beneficial, but weaker in this setup. It reduces dangerous-heat hours by up to 12 hours and has no effect in one lower-risk site.
 
 The simple tree-cover experiment worsens the air-temperature threshold metric in this compatibility run. That should not be read as a general conclusion that trees increase heat risk. It means this particular parameter-only edit, with no accompanying changes to irrigation, soil moisture, canopy shading geometry, or morphology, shifts the SUEWS energy balance in a way that increases near-surface air-temperature hours above 35 C. Before making a design recommendation about trees, this result needs a better vegetation scenario that also tests hydrology and canopy assumptions.
+
+The non-albedo additions are mostly neutral for this threshold metric. Grass cover is slightly worse, water cover is slightly better, and changing evergreen irrigation or vegetation soil-store capacity alone does not change dangerous-heat-hour counts. In this setup, the air-temperature hazard is more responsive to radiative parameters than to isolated hydrological parameters.
 
 ## Files
 

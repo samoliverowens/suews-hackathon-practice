@@ -5,6 +5,8 @@ The experiments deliberately change only SUEWS physical inputs:
 * tree cover fraction, balanced by paved fraction
 * paved-surface albedo
 * building-surface albedo
+* grass and water cover fraction
+* vegetation irrigation and soil-water storage
 
 They run against the future hot-humid forcing only and save compact CSVs, not
 large parquet result frames.
@@ -69,6 +71,34 @@ EXPERIMENTS = [
         "surface": "bldgs",
         "albedo": 0.35,
     },
+    {
+        "name": "grass_5pp_from_paved",
+        "description": "Add 5 percentage points grass cover, removing the same amount from paved cover.",
+        "operation": "surface_from_paved",
+        "surface": "grass",
+        "delta": 0.05,
+    },
+    {
+        "name": "water_2pp_from_paved",
+        "description": "Add 2 percentage points water cover, removing the same amount from paved cover.",
+        "operation": "surface_from_paved",
+        "surface": "water",
+        "delta": 0.02,
+    },
+    {
+        "name": "evetr_irrigation_fraction_100",
+        "description": "Set evergreen tree irrigation fraction to 1.0.",
+        "operation": "surface_irrigation_fraction",
+        "surface": "evetr",
+        "irrigation_fraction": 1.0,
+    },
+    {
+        "name": "vegetation_soil_store_300",
+        "description": "Set evergreen, deciduous and grass soil-store capacity to 300.",
+        "operation": "surface_soil_store_capacity",
+        "surfaces": ["evetr", "dectr", "grass"],
+        "soil_store_capacity": 300.0,
+    },
 ]
 
 
@@ -100,22 +130,23 @@ def apply_experiment(config: dict, experiment: dict) -> list[dict]:
     changes = []
     for site in config["sites"]:
         cover = land_cover(site)
-        if experiment["operation"] == "tree_from_paved":
+        if experiment["operation"] in {"tree_from_paved", "surface_from_paved"}:
             delta = float(experiment["delta"])
+            target = "evetr" if experiment["operation"] == "tree_from_paved" else experiment["surface"]
             paved = value(cover["paved"]["sfr"])
-            evetr = value(cover["evetr"]["sfr"])
+            target_before = value(cover[target]["sfr"])
             if paved < delta:
                 raise ValueError(f"{site['name']} has paved fraction {paved}, cannot remove {delta}")
             set_value(cover["paved"]["sfr"], paved - delta)
-            set_value(cover["evetr"]["sfr"], evetr + delta)
+            set_value(cover[target]["sfr"], target_before + delta)
             changes.append(
                 {
                     "gridiv": site["gridiv"],
                     "name": site["name"],
                     "paved_sfr_before": paved,
                     "paved_sfr_after": paved - delta,
-                    "evetr_sfr_before": evetr,
-                    "evetr_sfr_after": evetr + delta,
+                    f"{target}_sfr_before": target_before,
+                    f"{target}_sfr_after": target_before + delta,
                 }
             )
         elif experiment["operation"] == "surface_albedo":
@@ -131,6 +162,28 @@ def apply_experiment(config: dict, experiment: dict) -> list[dict]:
                     f"{surface}_albedo_after": after,
                 }
             )
+        elif experiment["operation"] == "surface_irrigation_fraction":
+            surface = experiment["surface"]
+            before = value(cover[surface]["irrigation_fraction"])
+            after = float(experiment["irrigation_fraction"])
+            set_value(cover[surface]["irrigation_fraction"], after)
+            changes.append(
+                {
+                    "gridiv": site["gridiv"],
+                    "name": site["name"],
+                    f"{surface}_irrigation_fraction_before": before,
+                    f"{surface}_irrigation_fraction_after": after,
+                }
+            )
+        elif experiment["operation"] == "surface_soil_store_capacity":
+            row = {"gridiv": site["gridiv"], "name": site["name"]}
+            after = float(experiment["soil_store_capacity"])
+            for surface in experiment["surfaces"]:
+                before = value(cover[surface]["soil_store_capacity"])
+                set_value(cover[surface]["soil_store_capacity"], after)
+                row[f"{surface}_soil_store_capacity_before"] = before
+                row[f"{surface}_soil_store_capacity_after"] = after
+            changes.append(row)
         else:
             raise ValueError(f"Unknown operation: {experiment['operation']}")
         validate_land_cover(site)
@@ -197,6 +250,24 @@ def main() -> int:
 
     for experiment in EXPERIMENTS:
         started = time.perf_counter()
+        summary_path = OUT_DIR / f"{experiment['name']}_future_summary.csv"
+        changes_path = OUT_DIR / f"{experiment['name']}_changes.csv"
+        if summary_path.exists() and changes_path.exists():
+            summary = pd.read_csv(summary_path)
+            all_summary.append(summary)
+            run_log["experiments"].append(
+                {
+                    "name": experiment["name"],
+                    "description": experiment["description"],
+                    "status": "skipped_existing_output",
+                    "elapsed_seconds": 0.0,
+                    "min_delta_dangerous_heat_hours": int(summary["delta_dangerous_heat_hours"].min()),
+                    "max_delta_dangerous_heat_hours": int(summary["delta_dangerous_heat_hours"].max()),
+                }
+            )
+            print(json.dumps(run_log["experiments"][-1], indent=2))
+            continue
+
         config_path, changes = write_config(experiment)
         results = run_config(config_path)
         risk = build_risk(results, neighbourhoods, socio)
@@ -228,8 +299,8 @@ def main() -> int:
             "qs_mean_w_m2",
         ]
         summary = summary[cols].sort_values(["experiment", "gridiv"])
-        summary.to_csv(OUT_DIR / f"{experiment['name']}_future_summary.csv", index=False)
-        pd.DataFrame(changes).to_csv(OUT_DIR / f"{experiment['name']}_changes.csv", index=False)
+        summary.to_csv(summary_path, index=False)
+        pd.DataFrame(changes).to_csv(changes_path, index=False)
         all_summary.append(summary)
         run_log["experiments"].append(
             {
