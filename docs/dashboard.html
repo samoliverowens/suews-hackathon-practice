@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UDA-city Heat-risk Dashboard</title>
+    <link rel="stylesheet" href="assets/dashboard/dashboard.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SUEWS Community Hackathon</p>
+        <h1>UDA-city heat-risk experiments</h1>
+      </div>
+      <nav aria-label="Dashboard navigation">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report</a>
+        <a href="physical-experiments.html">Experiment notes</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="summary-grid" aria-label="Headline metrics">
+        <article class="metric">
+          <span>Highest future risk</span>
+          <strong id="top-risk-site">-</strong>
+          <small id="top-risk-detail">-</small>
+        </article>
+        <article class="metric">
+          <span>Future mean heat hours</span>
+          <strong id="future-mean-hours">-</strong>
+          <small>Baseline future scenario</small>
+        </article>
+        <article class="metric good">
+          <span>Best tested intervention</span>
+          <strong id="best-experiment">-</strong>
+          <small id="best-experiment-detail">-</small>
+        </article>
+        <article class="metric warn">
+          <span>Largest adverse response</span>
+          <strong id="worst-experiment">-</strong>
+          <small id="worst-experiment-detail">-</small>
+        </article>
+      </section>
+
+      <section class="band baseline-band">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Baseline</p>
+            <h2>Present to future heat risk</h2>
+          </div>
+          <p>The future scenario applies the supplied +2.5 C pseudo-warming. Bars show annual dangerous-heat hours after the 14-day spin-up.</p>
+        </div>
+        <div class="split">
+          <div class="chart-panel">
+            <div id="baseline-bars" class="bar-list"></div>
+          </div>
+          <figure class="image-panel">
+            <img src="assets/focus_city/overview_risk_index.png" alt="Overview chart of present and future risk index by neighbourhood" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Experiments</p>
+            <h2>Intervention response</h2>
+          </div>
+          <p>Negative deltas reduce dangerous-heat hours. Positive deltas increase them. The albedo baseline was 0.20 for paved and building surfaces.</p>
+        </div>
+        <div id="experiment-filters" class="filters" aria-label="Experiment filters"></div>
+        <div class="table-wrap">
+          <table id="experiment-table">
+            <thead>
+              <tr>
+                <th>Experiment</th>
+                <th>Group</th>
+                <th>Parameter</th>
+                <th>Baseline mean</th>
+                <th>Scenario mean</th>
+                <th>Mean delta</th>
+                <th>Range</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Neighbourhoods</p>
+            <h2>Site-level experiment detail</h2>
+          </div>
+          <label class="site-picker">
+            Site
+            <select id="site-select"></select>
+          </label>
+        </div>
+        <div class="site-grid">
+          <article class="site-profile">
+            <div class="site-title">
+              <div>
+                <p id="site-type" class="eyebrow">-</p>
+                <h3 id="site-name">-</h3>
+              </div>
+              <strong id="site-risk" class="risk-pill">-</strong>
+            </div>
+            <dl class="site-stats">
+              <div><dt>Present heat hours</dt><dd id="site-present-hours">-</dd></div>
+              <div><dt>Future heat hours</dt><dd id="site-future-hours">-</dd></div>
+              <div><dt>Future T2 mean</dt><dd id="site-t2">-</dd></div>
+              <div><dt>QH / QE</dt><dd id="site-flux">-</dd></div>
+            </dl>
+            <div id="site-components" class="components"></div>
+          </article>
+          <figure class="site-figure">
+            <img id="site-image" src="assets/focus_city/site_01.png" alt="Site-level SUEWS and risk plot" />
+          </figure>
+        </div>
+        <div class="table-wrap">
+          <table id="site-experiment-table">
+            <thead>
+              <tr>
+                <th>Experiment</th>
+                <th>Baseline hours</th>
+                <th>Scenario hours</th>
+                <th>Delta hours</th>
+                <th>Risk change</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="band notes-band">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Interpretation</p>
+            <h2>What the experiments suggest</h2>
+          </div>
+        </div>
+        <div class="note-grid">
+          <article>
+            <h3>Radiative changes dominate this metric</h3>
+            <p>Paved albedo is the clearest beneficial single-factor test, reducing dangerous-heat hours across every neighbourhood.</p>
+          </article>
+          <article>
+            <h3>Trees need a better scenario</h3>
+            <p>The tree-fraction tests increase the dry-bulb air-temperature threshold metric. That is a warning about the narrow parameter edit, not evidence against urban trees.</p>
+          </article>
+          <article>
+            <h3>Hydrology-only tests are nearly neutral</h3>
+            <p>Water fraction is slightly beneficial, while evergreen irrigation and vegetation soil-storage changes do not move the threshold-hour count in this setup.</p>
+          </article>
+        </div>
+        <p id="compatibility-note" class="caveat"></p>
+      </section>
+    </main>
+
+    <script src="assets/dashboard/dashboard-data.js"></script>
+    <script src="assets/dashboard/dashboard.js"></script>
+  </body>
+</html>

@@ -4,6 +4,8 @@ This practice submission runs SUEWS for the UDA-city focus dataset, bridges heat
 
 [Read the full report](report.html)
 
+[Open the interactive dashboard](dashboard.html)
+
 [Read the physical-parameter experiment notes](physical-experiments.html)
 
 ## Headline
