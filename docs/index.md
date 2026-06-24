@@ -1,12 +1,19 @@
-# [Your project title]
+# SUEWS Hackathon Practice
 
-Your public showcase page. Enable **GitHub Pages** (Settings → Pages → build from `main`, `/docs` folder) so this renders as a public site.
+This is a practice repository for the SUEWS Community Hackathon setup workflow.
 
-Tell the story:
+## Setup smoke test
 
-- The question you asked.
-- How you configured SUEWS via the suews-agent.
-- Your heat-hazard result and the socio-economic risk indicator.
-- Where the hazard-to-indicator bridge holds, and where it breaks.
+I used the SUEWS/SuPy runtime installed through the SUEWS agent tooling to run the bundled sample simulation for 1-2 August 2012.
 
-> This page is judged on **Policy relevance & honest bridging** and **Presentation quality**. It must be public.
+- Status: success
+- Runtime: SuPy 2025.7.6
+- Output: 576 five-minute timesteps, 1001 output columns
+- Exported variables: T2, QN, QH, QE, QS, Rain
+- Mean 2 m air temperature in the sample: 18.77 C
+
+The reproducible script and compact outputs are in `analysis/`.
+
+## Hackathon reminder
+
+For the judged repository, replace this practice page with the heat-hazard story, the socio-economic risk indicator, and a plain account of where the hazard-to-indicator bridge holds or breaks.

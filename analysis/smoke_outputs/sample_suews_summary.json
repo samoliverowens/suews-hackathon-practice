@@ -1,0 +1,39 @@
+{
+  "status": "success",
+  "runtime": "supy",
+  "supy_version": "2025.7.6",
+  "sample_period": {
+    "start": "2012-08-01",
+    "end": "2012-08-02"
+  },
+  "output_shape": [
+    576,
+    1001
+  ],
+  "final_state_shape": [
+    2,
+    1398
+  ],
+  "first_timestamp": "(np.int64(1), Timestamp('2012-08-01 00:00:00'))",
+  "last_timestamp": "(np.int64(1), Timestamp('2012-08-02 23:55:00'))",
+  "variables_exported": [
+    "T2",
+    "QN",
+    "QH",
+    "QE",
+    "QS",
+    "Rain"
+  ],
+  "t2_celsius": {
+    "min": 15.00688578919072,
+    "mean": 18.774614391919062,
+    "max": 22.99919752479331
+  },
+  "energy_flux_means_w_m2": {
+    "QN": 102.84093570628144,
+    "QH": 134.19525048345218,
+    "QE": 27.374484599096963,
+    "QS": 28.5418182490884
+  },
+  "rows_with_missing_exported_values": 0
+}
