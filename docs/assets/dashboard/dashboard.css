@@ -185,6 +185,7 @@ main {
 }
 
 .bar-track {
+  display: block;
   height: 14px;
   background: #e8edef;
   border-radius: 999px;
@@ -192,6 +193,7 @@ main {
 }
 
 .bar-fill {
+  display: block;
   height: 100%;
   background: linear-gradient(90deg, var(--gold), var(--heat));
   border-radius: inherit;
@@ -298,8 +300,33 @@ tr:last-child td {
 .site-picker {
   display: grid;
   gap: 4px;
-  color: var(--muted);
-  font-size: 0.9rem;
+  color: var(--navy);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.site-picker-card {
+  min-width: 280px;
+  padding: 12px;
+  border: 2px solid var(--cool);
+  background: #eef8f6;
+  box-shadow: var(--shadow);
+}
+
+.site-picker select {
+  width: 100%;
+  border-color: #79b9b2;
+  background:
+    linear-gradient(45deg, transparent 50%, var(--cool) 50%),
+    linear-gradient(135deg, var(--cool) 50%, transparent 50%),
+    linear-gradient(to right, #d8ebe8, #d8ebe8);
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 12px) calc(50% - 3px),
+    calc(100% - 40px) 50%;
+  background-size: 6px 6px, 6px 6px, 1px 70%;
+  background-repeat: no-repeat;
+  padding-right: 48px;
 }
 
 .site-profile {
@@ -312,6 +339,12 @@ tr:last-child td {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 18px;
+}
+
+.site-description {
+  margin: -6px 0 18px;
+  color: var(--muted);
+  font-size: 0.98rem;
 }
 
 .site-title h3 {
@@ -364,9 +397,38 @@ dd {
 }
 
 .component-fill {
+  display: block;
   height: 10px;
   border-radius: 999px;
   background: var(--cool);
+}
+
+.risk-explainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.risk-explainer article {
+  border: 1px solid var(--line);
+  background: #fbfcfc;
+  padding: 16px;
+}
+
+.risk-explainer strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--navy);
+}
+
+.risk-explainer p,
+.plain-note {
+  color: var(--muted);
+}
+
+.plain-note {
+  margin-top: 14px;
+  max-width: 820px;
 }
 
 .note-grid {
@@ -406,7 +468,8 @@ dd {
   .summary-grid,
   .split,
   .site-grid,
-  .note-grid {
+  .note-grid,
+  .risk-explainer {
     grid-template-columns: 1fr;
   }
 

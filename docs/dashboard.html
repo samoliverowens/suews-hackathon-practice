@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UDA-city Heat-risk Dashboard</title>
+    <title>UDA-city Heat Risk Dashboard</title>
     <link rel="stylesheet" href="assets/dashboard/dashboard.css" />
   </head>
   <body>
     <header class="topbar">
       <div>
         <p class="eyebrow">SUEWS Community Hackathon</p>
-        <h1>UDA-city heat-risk experiments</h1>
+        <h1>UDA-city heat risk choices</h1>
       </div>
       <nav aria-label="Dashboard navigation">
         <a href="index.html">Home</a>
@@ -22,22 +22,22 @@
     <main>
       <section class="summary-grid" aria-label="Headline metrics">
         <article class="metric">
-          <span>Highest future risk</span>
+          <span>Most at risk in the hotter future</span>
           <strong id="top-risk-site">-</strong>
           <small id="top-risk-detail">-</small>
         </article>
         <article class="metric">
-          <span>Future mean heat hours</span>
+          <span>Average future heat hours</span>
           <strong id="future-mean-hours">-</strong>
-          <small>Baseline future scenario</small>
+          <small>If nothing is changed</small>
         </article>
         <article class="metric good">
-          <span>Best tested intervention</span>
+          <span>Best option tested</span>
           <strong id="best-experiment">-</strong>
           <small id="best-experiment-detail">-</small>
         </article>
         <article class="metric warn">
-          <span>Largest adverse response</span>
+          <span>Option that made heat worse</span>
           <strong id="worst-experiment">-</strong>
           <small id="worst-experiment-detail">-</small>
         </article>
@@ -46,10 +46,10 @@
       <section class="band baseline-band">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Baseline</p>
-            <h2>Present to future heat risk</h2>
+            <p class="eyebrow">Starting Point</p>
+            <h2>How hot each neighbourhood gets</h2>
           </div>
-          <p>The future scenario applies the supplied +2.5 C pseudo-warming. Bars show annual dangerous-heat hours after the 14-day spin-up.</p>
+          <p>A heat hour is one hour where average outdoor air temperature is above 35 C. The chart shows the hotter future if no neighbourhood changes are made.</p>
         </div>
         <div class="split">
           <div class="chart-panel">
@@ -64,23 +64,47 @@
       <section class="band">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Experiments</p>
-            <h2>Intervention response</h2>
+            <p class="eyebrow">How Risk Is Scored</p>
+            <h2>The risk score combines heat, people and sensitivity</h2>
           </div>
-          <p>Negative deltas reduce dangerous-heat hours. Positive deltas increase them. The albedo baseline was 0.20 for paved and building surfaces.</p>
+        </div>
+        <div class="risk-explainer">
+          <article>
+            <strong>1. Heat</strong>
+            <p>How often a neighbourhood crosses 35 C in the future weather run.</p>
+          </article>
+          <article>
+            <strong>2. People exposed</strong>
+            <p>How many people are likely to be in the neighbourhood during the day.</p>
+          </article>
+          <article>
+            <strong>3. Sensitivity</strong>
+            <p>Whether people have less protection, such as low AC access, outdoor work, deprivation, or age-related vulnerability.</p>
+          </article>
+        </div>
+        <p class="plain-note">The final risk score is high only when all three are high. A very hot but mostly empty neighbourhood, or a crowded but cooler one, scores lower.</p>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Tested Options</p>
+            <h2>Which changes helped?</h2>
+          </div>
+          <p>Negative changes are good: they mean fewer heat hours. Positive changes mean the option made heat hours worse. For the reflective-surface tests, paving and buildings started at 0.20 and were tested at 0.35.</p>
         </div>
         <div id="experiment-filters" class="filters" aria-label="Experiment filters"></div>
         <div class="table-wrap">
           <table id="experiment-table">
             <thead>
               <tr>
-                <th>Experiment</th>
+                <th>Option Tested</th>
                 <th>Group</th>
-                <th>Parameter</th>
-                <th>Baseline mean</th>
-                <th>Scenario mean</th>
-                <th>Mean delta</th>
-                <th>Range</th>
+                <th>What changed</th>
+                <th>Before</th>
+                <th>After</th>
+                <th>Average change</th>
+                <th>Best to worst sites</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -91,13 +115,15 @@
       <section class="band">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Neighbourhoods</p>
-            <h2>Site-level experiment detail</h2>
+            <p class="eyebrow">Neighbourhood Detail</p>
+            <h2>Choose a neighbourhood</h2>
           </div>
-          <label class="site-picker">
-            Site
-            <select id="site-select"></select>
-          </label>
+          <div class="site-picker-card">
+            <label class="site-picker">
+              Select neighbourhood
+              <select id="site-select"></select>
+            </label>
+          </div>
         </div>
         <div class="site-grid">
           <article class="site-profile">
@@ -108,11 +134,12 @@
               </div>
               <strong id="site-risk" class="risk-pill">-</strong>
             </div>
+            <p id="site-description" class="site-description">-</p>
             <dl class="site-stats">
-              <div><dt>Present heat hours</dt><dd id="site-present-hours">-</dd></div>
+              <div><dt>Current heat hours</dt><dd id="site-present-hours">-</dd></div>
               <div><dt>Future heat hours</dt><dd id="site-future-hours">-</dd></div>
-              <div><dt>Future T2 mean</dt><dd id="site-t2">-</dd></div>
-              <div><dt>QH / QE</dt><dd id="site-flux">-</dd></div>
+              <div><dt>Average future temperature</dt><dd id="site-t2">-</dd></div>
+              <div><dt>Heat into air / evaporation</dt><dd id="site-flux">-</dd></div>
             </dl>
             <div id="site-components" class="components"></div>
           </article>
@@ -124,11 +151,11 @@
           <table id="site-experiment-table">
             <thead>
               <tr>
-                <th>Experiment</th>
-                <th>Baseline hours</th>
-                <th>Scenario hours</th>
-                <th>Delta hours</th>
-                <th>Risk change</th>
+                <th>Option Tested</th>
+                <th>Before</th>
+                <th>After</th>
+                <th>Heat-hour change</th>
+                <th>Risk-score change</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -140,21 +167,21 @@
         <div class="section-head">
           <div>
             <p class="eyebrow">Interpretation</p>
-            <h2>What the experiments suggest</h2>
+            <h2>What this means for decisions</h2>
           </div>
         </div>
         <div class="note-grid">
           <article>
-            <h3>Radiative changes dominate this metric</h3>
-            <p>Paved albedo is the clearest beneficial single-factor test, reducing dangerous-heat hours across every neighbourhood.</p>
+            <h3>Cooler paving helped most</h3>
+            <p>Making paved surfaces more reflective reduced heat hours in every neighbourhood we tested.</p>
           </article>
           <article>
-            <h3>Trees need a better scenario</h3>
-            <p>The tree-fraction tests increase the dry-bulb air-temperature threshold metric. That is a warning about the narrow parameter edit, not evidence against urban trees.</p>
+            <h3>Trees need a fuller test</h3>
+            <p>The tree-only surface change increased this air-temperature metric. That does not mean trees are bad; it means we did not yet model shade and water support well enough.</p>
           </article>
           <article>
-            <h3>Hydrology-only tests are nearly neutral</h3>
-            <p>Water fraction is slightly beneficial, while evergreen irrigation and vegetation soil-storage changes do not move the threshold-hour count in this setup.</p>
+            <h3>Water-only changes were small</h3>
+            <p>Adding a little water helped slightly. Changing irrigation or soil storage alone did not change the heat-hour count.</p>
           </article>
         </div>
         <p id="compatibility-note" class="caveat"></p>
