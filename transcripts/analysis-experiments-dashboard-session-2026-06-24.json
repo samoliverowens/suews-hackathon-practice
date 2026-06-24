@@ -1,0 +1,292 @@
+{
+  "schema_version": "1.0",
+  "transcript_type": "structured_session_export",
+  "verbatim": false,
+  "date": "2026-06-24",
+  "repository": {
+    "owner": "samoliverowens",
+    "name": "suews-hackathon-practice",
+    "github_url": "https://github.com/samoliverowens/suews-hackathon-practice",
+    "pages_url": "https://samoliverowens.github.io/suews-hackathon-practice/",
+    "dashboard_url": "https://samoliverowens.github.io/suews-hackathon-practice/dashboard.html"
+  },
+  "runtime_context": {
+    "supy_version": "2025.7.6",
+    "compatibility_note": "The supplied UDA-city dataset requested supy >= 2026.6.5, but this macOS 14 host could not install the available macOS 15 ARM wheel. The analysis used a clearly labelled compatibility path.",
+    "untracked_items": [
+      {
+        "path": "data/uda-city-hackathon/",
+        "reason": "Nested upstream dataset checkout intentionally left untracked."
+      }
+    ]
+  },
+  "session_summary": {
+    "objective": "Develop a SUEWS hackathon practice submission with baseline heat-risk analysis, physical-parameter experiments, a decision-maker dashboard, and transcripts.",
+    "main_outputs": [
+      "docs/report.md",
+      "docs/physical-experiments.md",
+      "docs/dashboard.html",
+      "analysis/focus_city/outputs/site_report_summary.csv",
+      "analysis/experiments/outputs/physical_experiments_future_summary.csv",
+      "transcripts/analysis-experiments-dashboard-session-2026-06-24.md",
+      "transcripts/analysis-experiments-dashboard-session-2026-06-24.json"
+    ]
+  },
+  "turns": [
+    {
+      "phase": "baseline_report",
+      "user_request": "Write a comprehensive report for each site including site descriptions, socio-economic factors, physical factors, climatological factors, SUEWS results, plots, heat-risk calculation and heat risk.",
+      "assistant_actions": [
+        "Ran present and future UDA-city SUEWS scenarios through the local compatibility path.",
+        "Used the supplied heat-risk bridge to calculate hazard, exposure, vulnerability and risk.",
+        "Generated compact CSV outputs and plots.",
+        "Created docs/report.md and linked it from docs/index.md."
+      ],
+      "outputs": [
+        "docs/report.md",
+        "docs/assets/focus_city/overview_dangerous_heat_hours.png",
+        "docs/assets/focus_city/overview_risk_index.png",
+        "docs/assets/focus_city/overview_future_components.png",
+        "docs/assets/focus_city/site_01.png through site_10.png",
+        "analysis/focus_city/outputs/site_report_summary.csv"
+      ],
+      "key_results": {
+        "present_dangerous_heat_hours_range": [0, 37],
+        "future_dangerous_heat_hours_range": [17, 211],
+        "highest_risk_site": "Fuzhou Lanes",
+        "risk_reason": "High heat hazard, high exposure and high vulnerability coincide."
+      },
+      "commit": {
+        "sha": "8aee4ee",
+        "message": "Add baseline UDA-city heat-risk report"
+      }
+    },
+    {
+      "phase": "first_physical_parameter_experiments",
+      "user_request": "Keep things simple and modify one physical SUEWS parameter at a time.",
+      "assistant_actions": [
+        "Created a physical-parameter experiment runner.",
+        "Ran future-forcing experiments for tree fraction and albedo changes.",
+        "Saved compact experiment summaries and generated experiment config files.",
+        "Documented the findings in the report and experiment notes."
+      ],
+      "experiments": [
+        {
+          "id": "trees_5pp_from_paved",
+          "plain_label": "More tree cover (+5 points)",
+          "change": "+0.05 evergreen tree surface fraction, -0.05 paved surface fraction",
+          "mean_delta_dangerous_heat_hours": 68.0
+        },
+        {
+          "id": "trees_10pp_from_paved",
+          "plain_label": "More tree cover (+10 points)",
+          "change": "+0.10 evergreen tree surface fraction, -0.10 paved surface fraction",
+          "mean_delta_dangerous_heat_hours": 137.1
+        },
+        {
+          "id": "paved_albedo_035",
+          "plain_label": "Cooler paving",
+          "change": "Paved albedo 0.20 to 0.35",
+          "mean_delta_dangerous_heat_hours": -8.7
+        },
+        {
+          "id": "building_albedo_035",
+          "plain_label": "Cooler roofs and buildings",
+          "change": "Building albedo 0.20 to 0.35",
+          "mean_delta_dangerous_heat_hours": -4.5
+        }
+      ],
+      "interpretation": [
+        "Paved albedo was the strongest beneficial single-factor test.",
+        "Building albedo was beneficial but weaker.",
+        "Tree surface-fraction-only changes increased the dry-bulb air-temperature threshold metric, which was treated as a diagnostic result rather than evidence against urban trees."
+      ],
+      "commit": {
+        "sha": "2dd907b",
+        "message": "Add physical SUEWS parameter experiments"
+      }
+    },
+    {
+      "phase": "tree_result_discussion",
+      "user_request": "Discuss why increasing tree coverage resulted in more heat risk hours, despite an expectation that trees should increase shading and reduce absorbed radiation.",
+      "assistant_response_summary": [
+        "The dangerous-heat metric used 2 m air temperature, not shaded pedestrian heat exposure or mean radiant temperature.",
+        "The model edit changed land-cover fractions, not explicit street shading geometry.",
+        "Vegetation can change albedo, heat storage, turbulence and flux partitioning.",
+        "The tree tests did not add irrigation, soil-water support, canopy geometry or revised morphology.",
+        "The result should be described as a narrow surface-fraction-only test, not a conclusion that trees increase heat risk."
+      ],
+      "recommended_framing": "The experiment does not show that trees increase heat risk; it shows that a surface-fraction-only tree retrofit is not a well-posed cooling intervention under this model setup and this air-temperature-only risk metric."
+    },
+    {
+      "phase": "report_baseline_comparison_update",
+      "user_request": "Include baseline values as well as new experimental values in the report.",
+      "assistant_actions": [
+        "Added baseline future dangerous-heat hours beside experiment values.",
+        "Added baseline risk and paved-albedo risk comparisons.",
+        "Added the albedo baseline note: paved and building albedo values were 0.20 in all sites and were tested at 0.35."
+      ],
+      "outputs": [
+        "docs/report.md",
+        "docs/physical-experiments.md"
+      ],
+      "commit": {
+        "sha": "0540a0c",
+        "message": "Add baseline comparisons to experiment report"
+      }
+    },
+    {
+      "phase": "non_albedo_experiments",
+      "user_request": "Focus on variables other than albedo.",
+      "assistant_actions": [
+        "Stopped an interrupted albedo-ladder run.",
+        "Added non-albedo physical experiments for grass, water, evergreen irrigation and vegetation soil-water storage.",
+        "Ran the new experiments under the future hot-humid forcing.",
+        "Updated the report and experiment notes."
+      ],
+      "experiments": [
+        {
+          "id": "grass_5pp_from_paved",
+          "plain_label": "More grass (+5 points)",
+          "change": "+0.05 grass surface fraction, -0.05 paved surface fraction",
+          "mean_delta_dangerous_heat_hours": 1.9
+        },
+        {
+          "id": "water_2pp_from_paved",
+          "plain_label": "More water (+2 points)",
+          "change": "+0.02 water surface fraction, -0.02 paved surface fraction",
+          "mean_delta_dangerous_heat_hours": -0.1
+        },
+        {
+          "id": "evetr_irrigation_fraction_100",
+          "plain_label": "Water evergreen trees",
+          "change": "Evergreen tree irrigation fraction set to 1.0",
+          "mean_delta_dangerous_heat_hours": 0.0
+        },
+        {
+          "id": "vegetation_soil_store_300",
+          "plain_label": "More soil water storage",
+          "change": "Evergreen, deciduous and grass soil-store capacity set from 150 to 300",
+          "mean_delta_dangerous_heat_hours": 0.0
+        }
+      ],
+      "interpretation": [
+        "Grass was nearly neutral but slightly worse.",
+        "Water was nearly neutral but slightly beneficial.",
+        "Evergreen irrigation alone did not change dangerous-heat-hour counts.",
+        "Vegetation soil-water storage alone did not change dangerous-heat-hour counts.",
+        "In this setup, the air-temperature hazard was more responsive to reflective surface changes than to isolated hydrological parameters."
+      ],
+      "commit": {
+        "sha": "ec018e5",
+        "message": "Add non-albedo physical parameter experiments"
+      }
+    },
+    {
+      "phase": "dashboard_creation",
+      "user_request": "Make a website based on the experiments.",
+      "assistant_recommendation": "Use a dependency-free static GitHub Pages dashboard rather than a large custom app.",
+      "assistant_actions": [
+        "Generated docs/assets/dashboard/dashboard-data.js from CSV outputs.",
+        "Created docs/dashboard.html.",
+        "Created docs/assets/dashboard/dashboard.css.",
+        "Created docs/assets/dashboard/dashboard.js.",
+        "Linked the dashboard from docs/index.md.",
+        "Ran JavaScript syntax and static consistency checks."
+      ],
+      "dashboard_features": [
+        "Headline metrics.",
+        "Baseline future heat-hour bars.",
+        "Experiment response table with filters.",
+        "Site selector.",
+        "Site plot and site-level experiment deltas.",
+        "Interpretation notes.",
+        "Compatibility caveat."
+      ],
+      "commit": {
+        "sha": "7e26eca",
+        "message": "Add experiment dashboard site"
+      }
+    },
+    {
+      "phase": "dashboard_usability_pass",
+      "user_request": "Make the website plain-English for decision-makers; fix the baseline bars; improve the site-level experiment detail section; add site descriptions; add a plain-English heat-risk explanation.",
+      "assistant_actions": [
+        "Rewrote dashboard copy in plainer English.",
+        "Fixed the baseline bars by setting the inner bar elements to display as block elements.",
+        "Added a prominent highlighted site selector.",
+        "Added plain-English site descriptions for all ten neighbourhoods.",
+        "Added a How Risk Is Scored section explaining heat, people exposed and sensitivity.",
+        "Renamed technical experiment labels to decision-maker labels.",
+        "Ran syntax and static consistency checks."
+      ],
+      "label_changes": [
+        {
+          "from": "Paved albedo 0.35",
+          "to": "Cooler paving"
+        },
+        {
+          "from": "Building albedo 0.35",
+          "to": "Cooler roofs and buildings"
+        },
+        {
+          "from": "Evergreen irrigation",
+          "to": "Water evergreen trees"
+        }
+      ],
+      "commit": {
+        "sha": "79dc4b9",
+        "message": "Improve dashboard for decision makers"
+      }
+    },
+    {
+      "phase": "pages_verification",
+      "user_request": "The Main Pages home did not seem to have changed.",
+      "assistant_actions": [
+        "Checked local docs/index.md.",
+        "Verified origin/main.",
+        "Fetched the live GitHub Pages home page with curl.",
+        "Confirmed the live home page contained the dashboard link and was serving the dashboard commit."
+      ],
+      "result": "The live page had updated; the likely issue was browser caching. The assistant advised hard refresh or direct dashboard access."
+    },
+    {
+      "phase": "markdown_transcript_export",
+      "user_request": "Export our transcript and commit it to the repo.",
+      "assistant_actions": [
+        "Created a structured Markdown transcript for the analysis, experiment and dashboard session.",
+        "Committed it locally."
+      ],
+      "outputs": [
+        "transcripts/analysis-experiments-dashboard-session-2026-06-24.md"
+      ],
+      "commit": {
+        "sha": "7f4d022",
+        "message": "Add analysis and dashboard session transcript",
+        "push_status": "not pushed at time of creation because push approval was rejected"
+      }
+    },
+    {
+      "phase": "json_transcript_export",
+      "user_request": "Upload a transcript in JSON format.",
+      "assistant_actions": [
+        "Created this structured JSON transcript.",
+        "Prepared it for commit and upload."
+      ],
+      "outputs": [
+        "transcripts/analysis-experiments-dashboard-session-2026-06-24.json"
+      ]
+    }
+  ],
+  "published_urls": {
+    "home": "https://samoliverowens.github.io/suews-hackathon-practice/",
+    "dashboard": "https://samoliverowens.github.io/suews-hackathon-practice/dashboard.html",
+    "report": "https://samoliverowens.github.io/suews-hackathon-practice/report.html",
+    "experiment_notes": "https://samoliverowens.github.io/suews-hackathon-practice/physical-experiments.html"
+  },
+  "known_limitations": [
+    "This is a structured transcript-style export rather than a verbatim UI log.",
+    "The analysis uses a SuPy 2025.7.6 compatibility path rather than the dataset-requested SuPy 2026.6.5 runtime.",
+    "The nested data/uda-city-hackathon checkout is intentionally untracked."
+  ]
+}
