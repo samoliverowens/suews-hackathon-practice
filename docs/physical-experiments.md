@@ -4,14 +4,29 @@ This page records a first one-factor sensitivity screen using only physical SUEW
 
 The response metric is the change in annual dangerous-heat hours relative to the baseline future run, where a dangerous-heat hour is an hourly mean 2 m air temperature above 35 C after the 14-day spin-up.
 
-## Experiments
+## Experiment Summary
 
-| Experiment | SUEWS parameter changed | Mean change in dangerous-heat hours | Range across sites | Fuzhou Lanes | Mlima Moto | Kampong Lama | Dhobi Lines |
+| Experiment | SUEWS parameter changed | Baseline mean hours | Experiment mean hours | Mean change | Range of change |
+|---|---|---:|---:|---:|---:|
+| `trees_5pp_from_paved` | +0.05 evergreen tree surface fraction, -0.05 paved fraction | 74.9 | 142.9 | +68.0 | +6 to +228 |
+| `trees_10pp_from_paved` | +0.10 evergreen tree surface fraction, -0.10 paved fraction | 74.9 | 212.0 | +137.1 | +19 to +352 |
+| `paved_albedo_035` | paved albedo set to 0.35 | 74.9 | 66.2 | -8.7 | -17 to -1 |
+| `building_albedo_035` | building albedo set to 0.35 | 74.9 | 70.4 | -4.5 | -12 to 0 |
+
+## Site Values
+
+| Site | Baseline future hours | Trees +5pp | Trees +10pp | Paved albedo 0.35 | Building albedo 0.35 | Baseline future risk | Paved-albedo risk |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| `trees_5pp_from_paved` | +0.05 evergreen tree surface fraction, -0.05 paved fraction | +68.0 | +6 to +228 | +228 | +190 | +19 | +12 |
-| `trees_10pp_from_paved` | +0.10 evergreen tree surface fraction, -0.10 paved fraction | +137.1 | +19 to +352 | +352 | +320 | +162 | +178 |
-| `paved_albedo_035` | paved albedo set to 0.35 | -8.7 | -17 to -1 | -17 | -11 | -15 | -12 |
-| `building_albedo_035` | building albedo set to 0.35 | -4.5 | -12 to 0 | -12 | -8 | -4 | -5 |
+| 1. Jade Gardens | 20 | 39 | 78 | 15 | 19 | 0.00 | 0.00 |
+| 2. Serendib Rise | 17 | 23 | 36 | 16 | 17 | 0.00 | 0.00 |
+| 3. Taman Melati | 21 | 66 | 89 | 16 | 19 | 0.00 | 0.00 |
+| 4. Kampong Lama | 103 | 122 | 265 | 88 | 99 | 0.76 | 0.74 |
+| 5. Dhobi Lines | 96 | 108 | 274 | 84 | 91 | 0.73 | 0.71 |
+| 6. Lusitano Square | 35 | 46 | 64 | 27 | 32 | 0.19 | 0.17 |
+| 7. Mlima Moto | 126 | 316 | 446 | 115 | 118 | 0.83 | 0.83 |
+| 8. Victoria Exchange | 55 | 143 | 196 | 46 | 50 | 0.21 | 0.20 |
+| 9. Fuzhou Lanes | 211 | 439 | 563 | 194 | 199 | 1.00 | 1.00 |
+| 10. Zheng He Towers | 65 | 127 | 109 | 61 | 60 | 0.00 | 0.00 |
 
 ## Interpretation
 

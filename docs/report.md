@@ -182,6 +182,29 @@ Climatological result: mean analysis-window T2 rises from 29.1 C to 31.6 C; maxi
 
 Heat-risk result: dangerous-heat hours increase from **1** to **65**. The risk index changes from **0.00** (#5) to **0.00** (#7). Components in the future scenario are hazard 0.25, exposure 0.77 and vulnerability 0.00.
 
+## Physical-parameter Experiments
+
+After the baseline present and future runs, four one-factor physical SUEWS parameter experiments were run under the future hot-humid forcing. Each experiment changes one physical parameter across all ten neighbourhoods and is compared with the baseline future scenario above.
+
+The table reports annual dangerous-heat hours after spin-up. Lower values are better. The final two columns show the baseline future risk index and the risk index for the clearest beneficial experiment, paved albedo set to 0.35.
+
+| Site | Baseline future hours | Trees +5pp | Trees +10pp | Paved albedo 0.35 | Building albedo 0.35 | Baseline future risk | Paved-albedo risk |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 1. Jade Gardens | 20 | 39 | 78 | 15 | 19 | 0.00 | 0.00 |
+| 2. Serendib Rise | 17 | 23 | 36 | 16 | 17 | 0.00 | 0.00 |
+| 3. Taman Melati | 21 | 66 | 89 | 16 | 19 | 0.00 | 0.00 |
+| 4. Kampong Lama | 103 | 122 | 265 | 88 | 99 | 0.76 | 0.74 |
+| 5. Dhobi Lines | 96 | 108 | 274 | 84 | 91 | 0.73 | 0.71 |
+| 6. Lusitano Square | 35 | 46 | 64 | 27 | 32 | 0.19 | 0.17 |
+| 7. Mlima Moto | 126 | 316 | 446 | 115 | 118 | 0.83 | 0.83 |
+| 8. Victoria Exchange | 55 | 143 | 196 | 46 | 50 | 0.21 | 0.20 |
+| 9. Fuzhou Lanes | 211 | 439 | 563 | 194 | 199 | 1.00 | 1.00 |
+| 10. Zheng He Towers | 65 | 127 | 109 | 61 | 60 | 0.00 | 0.00 |
+
+Across the ten sites, baseline future dangerous-heat hours average **74.9** hours. The +5pp and +10pp evergreen-tree surface-fraction tests increase that average to **142.9** and **212.0** hours respectively. Paved albedo 0.35 reduces it to **66.2** hours, and building albedo 0.35 reduces it to **70.4** hours.
+
+The vegetation result should be interpreted cautiously. This was a surface-fraction-only edit, not a full tree retrofit with explicit street shading, soil-moisture support, irrigation or revised canopy assumptions. It therefore tests a narrow SUEWS parameter perturbation, not the full cooling potential of urban trees for pedestrians.
+
 ## Caveats and Interpretation
 
 - SUEWS estimates environmental heat hazard, not observed health impact.
